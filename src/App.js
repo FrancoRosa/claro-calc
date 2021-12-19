@@ -3,12 +3,14 @@ import Blockly from "node-blockly/browser";
 import BlocklyDrawer, { Block, Category } from "react-blockly-drawer";
 import helloWorld from "./blocks/helloWorld";
 import claroTap from "./blocks/claroTap";
+import claroWire from "./blocks/claroWire";
+import claroTerminal from "./blocks/claroTerminal";
 
 function App() {
   return (
     <div className="App">
       <BlocklyDrawer
-        tools={[helloWorld, claroTap]}
+        tools={[helloWorld, claroTap, claroWire, claroTerminal]}
         onChange={(code, workspace) => {
           console.log(code, workspace);
         }}
