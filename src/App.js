@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Blockly from "node-blockly/browser";
+import BlocklyDrawer, { Block, Category } from "react-blockly-drawer";
+import helloWorld from "./blocks/helloWorld";
+import claroTap from "./blocks/claroTap";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BlocklyDrawer
+        tools={[helloWorld, claroTap]}
+        onChange={(code, workspace) => {
+          console.log(code, workspace);
+        }}
+        language={Blockly.JavaScript}
+        appearance={{
+          categories: {
+            Demo: {
+              colour: "270",
+            },
+          },
+        }}
+      >
+        <Category name="Variables" custom="VARIABLE" />
+        <Category name="Values">
+          <Block type="math_number" />
+          <Block type="text" />
+        </Category>
+      </BlocklyDrawer>
     </div>
   );
 }
