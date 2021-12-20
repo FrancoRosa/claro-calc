@@ -1,36 +1,44 @@
 import "./App.css";
 import Blockly from "node-blockly/browser";
 import BlocklyDrawer, { Block, Category } from "react-blockly-drawer";
-import helloWorld from "./blocks/helloWorld";
 import claroTap from "./blocks/claroTap";
 import claroWire from "./blocks/claroWire";
 import claroTerminal from "./blocks/claroTerminal";
+import { useState } from "react";
+import claroSplitter3 from "./blocks/claroSplitter3";
 
-function App() {
+const App = () => {
+  let newCode = "";
+
+  const handleChange = (code, workspace) => {
+    newCode = code;
+  };
+
   return (
     <div className="App">
       <BlocklyDrawer
-        tools={[helloWorld, claroTap, claroWire, claroTerminal]}
-        onChange={(code, workspace) => {
-          console.log(code, workspace);
-        }}
+        tools={[claroTap, claroWire, claroTerminal, claroSplitter3]}
+        onChange={handleChange}
         language={Blockly.JavaScript}
         appearance={{
           categories: {
-            Demo: {
+            Claro: {
               colour: "270",
             },
           },
         }}
+      ></BlocklyDrawer>
+      <button
+        className="button"
+        onClick={() => {
+          console.log(newCode);
+          console.log(eval(newCode));
+        }}
       >
-        <Category name="Variables" custom="VARIABLE" />
-        <Category name="Values">
-          <Block type="math_number" />
-          <Block type="text" />
-        </Category>
-      </BlocklyDrawer>
+        Eval
+      </button>
     </div>
   );
-}
+};
 
 export default App;

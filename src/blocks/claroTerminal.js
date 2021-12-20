@@ -2,7 +2,7 @@ import Blockly from "node-blockly/browser";
 
 const claroTerminal = {
   name: "claroTerminal",
-  category: "Demo",
+  category: "Claro",
   block: {
     init: function () {
       this.jsonInit({
@@ -18,7 +18,7 @@ const claroTerminal = {
         ],
         inputsInline: false,
         output: null,
-        colour: 160,
+        colour: 210,
         tooltip: "",
         helpUrl: "",
       });
@@ -27,7 +27,9 @@ const claroTerminal = {
   generator: (block) => {
     {
       var text_name = block.getFieldValue("NAME");
-      var code = `console.log('${text_name}', 'UL:', ul, 'DL:', dl);`;
+      const c1 = "// TAB\n";
+
+      var code = `console.log('${text_name} =>', 'UL:', ul, 'DL:', dl);\n`;
       return [code, Blockly.JavaScript.ORDER_ATOMIC];
     }
   },

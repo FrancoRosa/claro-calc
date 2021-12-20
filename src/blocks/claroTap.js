@@ -2,12 +2,12 @@ import Blockly from "node-blockly/browser";
 
 const claroTap = {
   name: "claroTap",
-  category: "Demo",
+  category: "Claro",
   block: {
     init: function () {
       this.jsonInit({
         type: "claro_tab",
-        message0: "UL[dBmv] %1 %2 DL[dBmv] %3 %4 %5",
+        message0: "US[dBmv] %1 %2 DS[dBmv] %3 %4 %5",
         args0: [
           {
             type: "field_number",
@@ -31,7 +31,7 @@ const claroTap = {
           },
         ],
         inputsInline: false,
-        colour: 160,
+        colour: 20,
         tooltip: "",
         helpUrl: "",
       });
@@ -45,10 +45,11 @@ const claroTap = {
       "NAME",
       Blockly.JavaScript.ORDER_ATOMIC
     );
-    const l1 = `let ul = ${number_ul};\n`;
-    const l2 = `let dl = ${number_dl};\n`;
+    const c1 = "// TAB\n";
+    const l1 = `var ul = ${number_ul};\n`;
+    const l2 = `var dl = ${number_dl};\n`;
     const l3 = `${value_name}`;
-    var code = `${l1}${l2}${l3}`;
+    var code = `${c1}${l1}${l2}${l3}`;
     return code;
   },
 };

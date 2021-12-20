@@ -2,7 +2,7 @@ import Blockly from "node-blockly/browser";
 
 const claroWire = {
   name: "claroWire",
-  category: "Demo",
+  category: "Claro",
   block: {
     init: function () {
       this.jsonInit({
