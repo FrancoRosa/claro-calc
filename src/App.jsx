@@ -6,18 +6,25 @@ import claroWire from "./blocks/claroWire";
 import claroTerminal from "./blocks/claroTerminal";
 import { useState } from "react";
 import claroSplitter3 from "./blocks/claroSplitter3";
+import format from "xml-formatter";
 
 const App = () => {
   let newCode = "";
+  let newWorkspace = "";
 
   const handleChange = (code, workspace) => {
     newCode = code;
+    newWorkspace = workspace;
   };
 
   return (
     <div className="App">
       <BlocklyDrawer
         tools={[claroTap, claroWire, claroTerminal, claroSplitter3]}
+        injectOptions={{
+          collapse: true,
+          maxInstances: 2,
+        }}
         onChange={handleChange}
         language={Blockly.JavaScript}
         appearance={{
@@ -27,10 +34,11 @@ const App = () => {
             },
           },
         }}
-      ></BlocklyDrawer>
+      />
       <button
         className="button"
         onClick={() => {
+          console.log(format(newWorkspace));
           console.log(newCode);
           console.log(eval(newCode));
         }}

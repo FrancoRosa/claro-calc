@@ -27,7 +27,7 @@ const claroTerminal = {
   generator: (block) => {
     {
       var text_name = block.getFieldValue("NAME");
-      const c1 = "// TAB\n";
+      const c1 = "// Terminal\n";
 
       var code = `console.log('${text_name} =>', 'UL:', ul, 'DL:', dl);\n`;
       return [code, Blockly.JavaScript.ORDER_ATOMIC];
